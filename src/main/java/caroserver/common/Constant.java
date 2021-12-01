@@ -7,5 +7,5 @@ public class Constant {
 	public static final String DEFAULT = "T";
 	public static final int SO_COT = 20;
 	public static final int SO_HANG = 20;
-	public static final int SIZE_O_CO = 35;
+	public static final int SIZE_O_CO = 30;
 }

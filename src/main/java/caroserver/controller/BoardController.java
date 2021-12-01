@@ -2,10 +2,8 @@ package caroserver.controller;
 
 import caroserver.request.DanhCoRequest;
 import caroserver.response.DanhCoResponse;
-import caroserver.response.RestartGameResponse;
 import caroserver.service.BoardService;
 import com.google.gson.Gson;
-import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,7 +32,17 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/restart", method = RequestMethod.POST)
-	public RestartGameResponse restartGame() {
-		RestartGameResponse restartGameResponse = new RestartGameResponse();
+	public boolean restartGame() {
+		System.out.println("Init restart game... ");
+		boolean result;
+		try {
+			boardService.init();
+			result = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			result = false;
+		}
+		System.out.println("Restart game " + result);
+		return result;
 	}
 }
